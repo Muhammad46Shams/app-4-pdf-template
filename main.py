@@ -12,8 +12,18 @@ for index, row in df.iterrows():
     pdf.add_page()
     pdf.set_font(family='Times',style='B', size=24)
     pdf.set_text_color(100,100,100)
-    pdf.cell(w=0, h=24, txt=row['Topic'], border=0, ln=1, align='L')
-    pdf.line(10, 27, 200, 27)
+    pdf.cell(w=0, h=24, txt=row['Topic'], border=0, ln=1, align='L')    
+  
+    # to show lines in the page   // my solution
+    # x = 27
+    # while x <= 277:        
+    #     pdf.line(10, x, 200, x)
+    #     x +=10
+        
+    # to show lines in the page // course teacher solution 
+    for y in range(27, 298, 10):
+         pdf.line(10, y, 200, y)
+    pdf.line(10, 28, 200, 28)
     
     # set the footers
     pdf.ln(240)
@@ -24,6 +34,17 @@ for index, row in df.iterrows():
     
     for i in range(row['Pages']-1):
         pdf.add_page()
+        
+        # to show lines in the page   
+        # x = 7
+        # while x <= 277:        
+        #     pdf.line(10, x, 200, x)
+        #     x +=10
+
+        # to show lines in the page // course teacher solution 
+        for y in range(10, 298, 10):
+            pdf.line(10, y, 200, y)
+
         # set the footers
         pdf.ln(270)
         pdf.set_font(family='Times',style='I', size=8)
